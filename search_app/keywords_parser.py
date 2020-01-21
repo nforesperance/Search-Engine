@@ -8,7 +8,7 @@ import string
 import collections
 import spacy
 
-language = "english"
+language = "french"
 #url = 'https://www.troyhunt.com/the-773-million-record-collection-1-data-reach/'
 url = "https://openclassrooms.com/fr/courses/4668271-developpez-des-applications-web-avec-angular/5087065-structurez-avec-les-components"
 search = "Collection"

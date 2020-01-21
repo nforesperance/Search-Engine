@@ -55,6 +55,7 @@ def google_search1(pool,search_term, api_key, cse_id, **kwargs):
     service = build("customsearch", "v1", developerKey=api_key)
     res = service.cse().list(q=search_term, cx=cse_id, **kwargs).execute()
     rep = res['items']
+    # rep = [res['items'][0],res['items'][1]]
     results = [pool.apply(fetch, args=(item,search_term)) for item in rep]
     return results
     # return more_structured_items([res['items'][0], res['items'][1]], query=search_term)
@@ -72,10 +73,13 @@ def fetch(item,query):
                 'heading':heading,
                 }
     else:
+        heading = (scraping_unit.item['htmlSnippet'][:60]).replace("<b>", "")
+        heading = heading.replace("</b>","")
         result ={'link': scraping_unit.url,
                 'htmlTitle': scraping_unit.item['htmlTitle'],
                 'displayLink': scraping_unit.item['displayLink'],
                 'htmlSnippet': scraping_unit.item['htmlSnippet'],
+                'heading':heading,
                 }
     print(result)
     return result

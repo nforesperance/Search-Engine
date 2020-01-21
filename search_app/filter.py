@@ -66,10 +66,21 @@ class AntologyProcessor():
 
     @staticmethod
     def getElement(search,elts):
+        arr = []
         for elt in elts:
             if search in elt:
-                return elt
-
+                arr.append(elt)
+        if len(arr)>0:
+            max = len(arr[0])
+            elt = arr[0]
+            for s in arr:
+                if len(s)>max:
+                    max = len(s)
+                    elt = s
+            return elt
+        else:
+            return ""
+        
 
 class ScrapingProcessorUnit():
 
@@ -103,7 +114,10 @@ class ScrapingProcessorUnit():
 
     def getPrincipalSection(self , extrait):
         try :
-            return "..." + AntologyProcessor.getElement(extrait , self.sections)[:200] + "..."
+            if( AntologyProcessor.getElement(extrait , self.sections)==""):
+                return AntologyProcessor.getElement(extrait , self.sections)
+            else:
+                return "..." + AntologyProcessor.getElement(extrait , self.sections)[:400] + "..."
         except :
             return AntologyProcessor.getElement(extrait , self.sections)
     
