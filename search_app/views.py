@@ -44,11 +44,14 @@ def index(request):
         page = 0
     query = request.GET.get("query")
     if not query:
+        pool.close()
         return render(request, template_name='search_app/result2.html', context={"total": total_page, 'result': [], 'form': form , "query" : query})
+    
     if page > 0:
         result = google_search1(pool,query, API_KEY, ENGINE_ID, start=int(page)*10)
     else:
         result = google_search1(pool,query, API_KEY, ENGINE_ID)
+    pool.close()
     return render(request, template_name='search_app/result2.html', context={"total": total_page, 'result': result, 'form': form , "query" : query})
 
 
