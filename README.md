@@ -4,7 +4,7 @@ A custom search engine built with python (Django) and google api client
 #### Creating a Virtual Environment 
 **Intallation**
 ```bash
-pip install virtualenvwrapper-win
+> pip install virtualenvwrapper-win
 ```
 **creating**
 on the command line (example for creating a virtual environment named **search**)
