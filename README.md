@@ -20,6 +20,17 @@ In the virtual env write the command
 ```bash
 > pip install -r requirements.txt
 ```
+#### Note: for nltk:
+Open the **python shell** and run the following :
+```bash
+>> import nltk
+```
+```bash
+>> nltk.download("stopwords")
+```
+```bash
+>> nltk.download("punkt")
+```
 ### Running the App
 While in the virtual env and in the root of the project, write the following command:
 ```bash
